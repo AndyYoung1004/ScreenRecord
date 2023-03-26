@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
  * Created by lishilin on 2020/03/18
  */
 public abstract class ScreenCaptureCallback {
-
     /**
      * 成功
      *
@@ -23,5 +22,4 @@ public abstract class ScreenCaptureCallback {
     public void onFail() {
 
     }
-
 }

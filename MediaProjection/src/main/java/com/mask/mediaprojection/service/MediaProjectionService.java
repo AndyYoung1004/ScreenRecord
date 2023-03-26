@@ -186,9 +186,6 @@ public class MediaProjectionService extends Service {
 
         // 创建保存路径
         final File dirFile = getCacheDir();
-        boolean mkdirs = dirFile.mkdirs();
-        // 创建保存文件
-//        mediaFile = new File(dirFile, FileUtils.getDateName("MediaRecorder") + ".mp4");
         mediaFile = new File(dirFile, "MediaRecorder.mp4");
 
         // 调用顺序不能乱

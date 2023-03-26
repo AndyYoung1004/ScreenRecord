@@ -3,9 +3,8 @@ package com.mask.mediaprojectionlibrary;
 import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +20,7 @@ import com.mask.photo.utils.BitmapUtils;
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String TAG = "yangliu";
     private Button btn_service_start;
     private Button btn_service_stop;
     private Button btn_screen_capture;
@@ -103,10 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         .build();
             }
         });
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            LogUtil.i("Environment.isExternalStorageLegacy: " + Environment.isExternalStorageLegacy());
-        }
     }
 
     /**
@@ -132,13 +127,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(Bitmap bitmap) {
                 super.onSuccess(bitmap);
 
-                LogUtil.i("ScreenCapture onSuccess");
-
-//                int[] position = new int[2];
-//                layout_space.getLocationOnScreen(position);
-//                int width = layout_space.getWidth();
-//                int height = layout_space.getHeight();
-//                bitmap = Bitmap.createBitmap(bitmap, position[0], position[1], width, height);
+                Log.i(TAG, "ScreenCapture onSuccess");
 
                 saveBitmapToFile(bitmap, "ScreenCapture");
             }
@@ -147,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFail() {
                 super.onFail();
 
-                LogUtil.e("ScreenCapture onFail");
+                Log.e(TAG, "ScreenCapture onFail");
             }
         });
     }
@@ -161,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(File file) {
                 super.onSuccess(file);
 
-                LogUtil.i("MediaRecorder onSuccess: " + file.getAbsolutePath());
+                Log.i(TAG, "MediaRecorder onSuccess: " + file.getAbsolutePath());
 
                 Toast.makeText(getApplication(), getString(R.string.content_media_recorder_result, file.getAbsolutePath()), Toast.LENGTH_LONG).show();
             }
@@ -170,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFail() {
                 super.onFail();
 
-                LogUtil.e("MediaRecorder onFail");
+                Log.e(TAG, "MediaRecorder onFail");
             }
         });
     }
@@ -194,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(File file) {
                 super.onSuccess(file);
 
-                LogUtil.i("Save onSuccess: " + file.getAbsolutePath());
+                Log.i(TAG, "Save onSuccess: " + file.getAbsolutePath());
 
                 Toast.makeText(getApplication(), getString(R.string.content_save_bitmap_result, file.getAbsolutePath()), Toast.LENGTH_LONG).show();
             }
@@ -203,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFail(Exception e) {
                 super.onFail(e);
 
-                LogUtil.e("Save onError");
+                Log.e(TAG, "Save onError");
 
                 e.printStackTrace();
             }

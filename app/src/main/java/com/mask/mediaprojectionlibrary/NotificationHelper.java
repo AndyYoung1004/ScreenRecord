@@ -103,18 +103,4 @@ public class NotificationHelper {
         return create(CHANNEL_ID_SYSTEM);
     }
 
-    /**
-     * 显示通知栏
-     *
-     * @param id           id
-     * @param notification notification
-     */
-    public void show(int id, Notification notification) {
-        Context context = BaseApplication.getInstance();
-        NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-        if (manager != null) {
-            manager.notify(id, notification);
-        }
-    }
-
 }

@@ -2,6 +2,7 @@ package com.mask.mediaprojectionlibrary;
 
 import android.app.Application;
 import android.os.Handler;
+import android.util.Log;
 
 public abstract class BaseFrameApplication extends Application {
 
@@ -13,7 +14,7 @@ public abstract class BaseFrameApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        LogUtil.i("BaseFrameApplication onCreate");
+        Log.i("yangliu","BaseFrameApplication onCreate");
         onInitData();
         handler.post(new Runnable() {
             @Override
@@ -48,13 +49,13 @@ public abstract class BaseFrameApplication extends Application {
      * 初始化数据
      */
     protected void onInitData() {
-        LogUtil.i("BaseFrameApplication onInitData");
+        Log.i("yangliu","BaseFrameApplication onInitData");
     }
 
     /**
      * 线程初始化数据
      */
     protected void onInitDataThread() {
-        LogUtil.i("BaseFrameApplication onInitDataThread");
+        Log.i("yangliu","BaseFrameApplication onInitDataThread");
     }
 }

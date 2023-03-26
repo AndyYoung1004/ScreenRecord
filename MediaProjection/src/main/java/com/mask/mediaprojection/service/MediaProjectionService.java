@@ -21,7 +21,6 @@ import android.util.DisplayMetrics;
 import com.mask.mediaprojection.interfaces.MediaProjectionNotificationEngine;
 import com.mask.mediaprojection.interfaces.MediaRecorderCallback;
 import com.mask.mediaprojection.interfaces.ScreenCaptureCallback;
-import com.mask.mediaprojection.utils.FileUtils;
 import com.mask.mediaprojection.utils.MediaProjectionHelper;
 
 import java.io.File;
@@ -186,7 +185,7 @@ public class MediaProjectionService extends Service {
         int densityDpi = displayMetrics.densityDpi;
 
         // 创建保存路径
-        final File dirFile = FileUtils.getCacheMovieDir(this);
+        final File dirFile = getCacheDir();
         boolean mkdirs = dirFile.mkdirs();
         // 创建保存文件
 //        mediaFile = new File(dirFile, FileUtils.getDateName("MediaRecorder") + ".mp4");
